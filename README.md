@@ -1,28 +1,66 @@
-# Reusable table component
+# Reusable Table Component
 
-This project builds a reusable table component which enables rows to be selected.
+A lightweight React table component with optional row selection and bulk actions.
 
-### How to:
+## Features
 
-· Run `npm run dev` to start dev server on local
-· Run `npm run test` to run unit tests.
+- Reusable table rendering based on the shape of the input data.
+- Optional selectable mode via props (`isSelectable`).
+- Select-all checkbox with full support for:
+  - unchecked state (none selected)
+  - checked state (all selected)
+  - indeterminate state (some selected)
+- Dynamic selected count label (`None selected`, `Selected N`, `Selected All`).
+- `Download Selected` button that is enabled only when at least one selected row has `status: "available"`.
+- Download alert output includes only selected rows with `status: "available"`.
 
-### Features include:
+## Tech Stack
 
-· Only those that have a status of "available" are currently able to be downloaded.
-Your implementation should manage this. The Download button will be disabled if none selected rows are available to download.
-· The select-all checkbox should be in an unselected state if no items are selected.
-· The select-all checkbox should be in a selected state if all items are selected.
-· The select-all checkbox should be in an indeterminate state if some but not all
-items are selected.
-· The "Selected 2" text should reflect the count of selected items and display
-"None Selected" when there are none selected.
-· Clicking the select-all checkbox should select all items if none or some are
-selected.
-· Clicking the select-all checkbox should de-select all items if all are currently
-selected.
-· Status should be correctly formatted
-· Clicking "Download Selected" when some or all items are displayed should
-generate an alert box with the path and device of all selected files.
-· The selectable feature can be turned on/off with props. When it's off, it just shows a simple table.
-· Table name, table head can also be customizable, depending on the shape of the input data.
+- React + Vite
+- Vitest + React Testing Library
+- ESLint
+
+## Getting Started
+
+### 1) Install dependencies
+
+```bash
+npm install
+```
+
+### 2) Run the app locally
+
+```bash
+npm run dev
+```
+
+### 3) Run tests
+
+```bash
+npm run test
+```
+
+## Available Scripts
+
+- `npm run dev` — Start Vite development server.
+- `npm run build` — Type-check and build production assets.
+- `npm run preview` — Preview the production build locally.
+- `npm run lint` — Run ESLint.
+- `npm run test` — Run tests once with Vitest.
+- `npm run test:watch` — Run Vitest in watch mode.
+
+## Component API
+
+### `SelectableTable` props
+
+- `data` (`Array<object>`) — Table rows.
+- `name` (`string`, optional) — Table title and accessible table label.
+- `isSelectable` (`boolean`, optional, default: `true`) — Enables or disables row selection UI.
+
+## Example Usage
+
+```jsx
+<SelectableTable data={basicData} name="Basic Data" />
+<SelectableTable data={advancedData} name="Advanced Data" />
+<SelectableTable data={basicData} isSelectable={false} />
+```
