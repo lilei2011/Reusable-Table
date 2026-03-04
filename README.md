@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# Reusable table component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project builds a reusable table component which enables rows to be selected.
 
-Currently, two official plugins are available:
+### How to:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+· Run `npm run dev` to start dev server on local
+· Run `npm run test` to run unit tests.
 
-## React Compiler
+### Features include:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+· Only those that have a status of "available" are currently able to be downloaded.
+Your implementation should manage this. The Download button will be disabled if none selected rows are available to download.
+· The select-all checkbox should be in an unselected state if no items are selected.
+· The select-all checkbox should be in a selected state if all items are selected.
+· The select-all checkbox should be in an indeterminate state if some but not all
+items are selected.
+· The "Selected 2" text should reflect the count of selected items and display
+"None Selected" when there are none selected.
+· Clicking the select-all checkbox should select all items if none or some are
+selected.
+· Clicking the select-all checkbox should de-select all items if all are currently
+selected.
+· Status should be correctly formatted
+· Clicking "Download Selected" when some or all items are displayed should
+generate an alert box with the path and device of all selected files.
+· The selectable feature can be turned on/off with props. When it's off, it just shows a simple table.
+· Table name, table head can also be customizable, depending on the shape of the input data.
